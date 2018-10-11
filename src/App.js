@@ -1,28 +1,13 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
-
-export default App;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+// import logo from './logo.svg';
+require("./App.css");
+var styles_1 = require("@material-ui/core/styles");
+var green_1 = require("@material-ui/core/colors/green");
+var Root_1 = require("./components/Root");
+var theme = styles_1.createMuiTheme({ palette: { primary: green_1.default } });
+var App = function () { return (React.createElement(styles_1.MuiThemeProvider, { theme: theme },
+    React.createElement(Root_1.default, null))); };
+exports.default = App;
+//# sourceMappingURL=App.js.map
