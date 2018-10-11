@@ -4,7 +4,6 @@ import FoodTruckStopsProvider from "../../api/food-truck/FoodTruckStopsProvider"
 import AsyncSnapshot from "../../api/async/AsyncSnapshot";
 import PromiseBuilder from "../helper/PromiseBuilder";
 import ConnectionState from "../../api/async/ConnectionState";
-import * as css from '../../styles/widget.css';
 
 interface IFoodTruckWidgetState {
     promise?: Promise<FoodTruckStop[]>;
@@ -23,7 +22,7 @@ export default class FoodTruckWidget extends React.Component<any, IFoodTruckWidg
                 return (<div>Could not load stops...</div>);
             }
 
-            return (<div className={css.testClass}>Found {snapshot.data.length} stop(s)</div>);
+            return (<div>Found {snapshot.data.length} stop(s)</div>);
         }
 
         return (<div>Loading stops...</div>);

@@ -17,7 +17,6 @@ var React = require("react");
 var FoodTruckStopsProvider_1 = require("../../api/food-truck/FoodTruckStopsProvider");
 var PromiseBuilder_1 = require("../helper/PromiseBuilder");
 var ConnectionState_1 = require("../../api/async/ConnectionState");
-var css = require("../../styles/widget.css");
 var FoodTruckWidget = /** @class */ (function (_super) {
     __extends(FoodTruckWidget, _super);
     function FoodTruckWidget(props) {
@@ -30,7 +29,7 @@ var FoodTruckWidget = /** @class */ (function (_super) {
             if (snapshot.hasError) {
                 return (React.createElement("div", null, "Could not load stops..."));
             }
-            return (React.createElement("div", { className: css.testClass },
+            return (React.createElement("div", null,
                 "Found ",
                 snapshot.data.length,
                 " stop(s)"));
