@@ -69,4 +69,4 @@ var FoodTruckStop = /** @class */ (function () {
     return FoodTruckStop;
 }());
 exports.default = FoodTruckStop;
-//# sourceMappingURL=FoodTruckStop.js.map
+//# sourceMappingURL=StopDisplay.js.map

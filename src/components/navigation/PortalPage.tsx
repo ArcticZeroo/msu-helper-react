@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 import NavigationBarController from './NavigationBarController';
 import HomePage from '../pages/home/HomePage';
+import FoodTruckPage from '../pages/food-truck/FoodTruckPage';
 
 export default class PortalPage extends React.Component<any, any> {
     private readonly _navigationBar: NavigationBarController;
@@ -20,6 +21,12 @@ export default class PortalPage extends React.Component<any, any> {
             bottomBarTitle: 'Home',
             bottomBarIconBuilder: () => (<Icon>home</Icon>),
             pageBuilder: () => (<HomePage navigationBar={this._navigationBar}/>)
+        });
+        this._navigationBar.addPage({
+            appBarTitle: 'Food Truck Stops',
+            bottomBarTitle: 'Food Truck',
+            bottomBarIconBuilder: () => (<Icon>local_shipping</Icon>),
+            pageBuilder: () => (<FoodTruckPage />)
         });
     }
 

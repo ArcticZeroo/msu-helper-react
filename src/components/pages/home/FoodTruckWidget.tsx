@@ -1,20 +1,10 @@
 import * as React from 'react';
-import FoodTruckStop from "../../../api/food-truck/structures/FoodTruckStop";
-import FoodTruckStopsProvider from "../../../api/food-truck/FoodTruckStopsProvider";
-import AsyncSnapshot from "../../../api/async/AsyncSnapshot";
-import PromiseBuilder from "../../helper/PromiseBuilder";
-import ConnectionState from "../../../api/async/ConnectionState";
-import Card from '@material-ui/core/Card/Card';
-import Icon from '@material-ui/core/Icon/Icon';
-import Avatar from '@material-ui/core/Avatar/Avatar';
-import ListItem from '@material-ui/core/ListItem/ListItem';
+import FoodTruckStop from '../../../api/food-truck/structures/FoodTruckStop';
+import FoodTruckStopsProvider from '../../../api/food-truck/FoodTruckStopsProvider';
+import AsyncSnapshot from '../../../api/async/AsyncSnapshot';
+import PromiseBuilder from '../../helper/PromiseBuilder';
+import ConnectionState from '../../../api/async/ConnectionState';
 import MiniWidget from './MiniWidget';
-
-const styles = {
-    cardContainer: {
-
-    }
-};
 
 interface IFoodTruckWidgetState {
     promise?: Promise<FoodTruckStop[]>;
@@ -24,7 +14,7 @@ export default class FoodTruckWidget extends React.Component<any, IFoodTruckWidg
     constructor(props) {
         super(props);
 
-        this.state = { promise: FoodTruckStopsProvider.retrieve() };
+        this.state = { promise: null };
     }
 
     static renderCard(subtitle: string): Element {
@@ -39,10 +29,14 @@ export default class FoodTruckWidget extends React.Component<any, IFoodTruckWidg
                 return FoodTruckWidget.renderCard('Could not load stops...');
             }
 
-            return (FoodTruckWidget.renderCard(`Found ${snapshot.data.length} stop(s)`));
+            return FoodTruckWidget.renderCard(`Found ${snapshot.data.length} stop(s)`);
         }
 
         return FoodTruckWidget.renderCard('Loading stops...');
+    }
+
+    componentDidMount() {
+        this.setState({ promise: FoodTruckStopsProvider.retrieve() });
     }
 
     render(): Element {

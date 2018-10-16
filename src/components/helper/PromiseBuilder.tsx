@@ -28,20 +28,35 @@ export default class PromiseBuilder<T> extends React.Component<IPromiseBuilderPr
         });
     }
 
-    componentDidMount() {
+    async _waitForPromise() {
+        try {
+            const data: T = await this.props.promise;
+
+            this.updateSnapshot(ConnectionState.DONE, data);
+        } catch (e) {
+            this.updateSnapshot(ConnectionState.DONE, null, e);
+        }
+    }
+
+    _handleBuildingLifecycle() {
         if (!this.props.promise) {
             return;
         }
 
         this.updateSnapshot(ConnectionState.ACTIVE);
 
-        this.props.promise
-            .then(data => {
-                this.updateSnapshot(ConnectionState.DONE, data);
-            })
-            .catch(e => {
-                this.updateSnapshot(ConnectionState.DONE, null, e);
-            });
+        // @ts-ignore
+        this._waitForPromise().catch(console.error);
+    }
+
+    componentDidUpdate(prevProps: IPromiseBuilderProps<T>) {
+        if (prevProps.promise != this.props.promise) {
+            this._handleBuildingLifecycle();
+        }
+    }
+
+    componentDidMount() {
+        this._handleBuildingLifecycle();
     }
 
     render() {

@@ -14,7 +14,7 @@ export default class HomePage extends React.Component<IHomePageProps, any> {
 
     render() {
         return (
-            <TapAware onClick={() => console.log('Food truck tapped!')}>
+            <TapAware onClick={() => this.props.navigationBar.setPage(1)}>
                 <FoodTruckWidget />
             </TapAware>
         );

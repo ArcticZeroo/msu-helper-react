@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import styles from '../../styles/global';
+
 interface ITapAwareProps {
     onClick: () => any;
 }
@@ -7,9 +9,9 @@ interface ITapAwareProps {
 export default class TapAware extends React.Component<ITapAwareProps, any> {
     render(): Element {
         return (
-            <div onClick={this.props.onClick}>
+            <button onClick={this.props.onClick} style={styles.buttonWithoutStyle}>
                 {this.props.children}
-            </div>
+            </button>
         );
     }
 }
