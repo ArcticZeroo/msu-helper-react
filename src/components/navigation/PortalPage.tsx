@@ -54,7 +54,7 @@ export default class PortalPage extends React.Component<any, any> {
         return (
             <div className="portal">
                 {this._renderAppBar()}
-                <div style={{ padding: 16 }}>
+                <div style={{ padding: 16, paddingBottom: 52 + 16 }}>
                     {this._renderActivePage()}
                 </div>
                 {this._renderNavigationBar()}
